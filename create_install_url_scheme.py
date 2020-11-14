@@ -15,13 +15,15 @@ from tools_github import get_secret
 
 # globals for test functions
 
+# https://raw.githubusercontent.com/jdaniellhebert/Pythonista_Install_from_Github/main/install_from_github.py
+
 RAW_CODE = 'install_from_github.py'
 INSTALL_DIR_NAME = 'from-Github'
 GIT_AUTH = '' # empty because this is a public repository
 GIT_USR = 'jdaniellhebert'
-GIT_REPO = 'Pythonista-Github-Installer'
-GIT_BRANCH = 'master'
-START_FILE = 'installer_app.py'
+GIT_REPO = 'Pythonista_Install_from_Github'
+GIT_BRANCH = 'main'
+START_FILE = 'install_from_github.py'
 IS_RELEASE = 'False'
 SHORTCUTS_URL = ''
 
