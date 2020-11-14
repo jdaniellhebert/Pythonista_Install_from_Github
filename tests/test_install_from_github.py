@@ -18,6 +18,7 @@ config_dict = json.load(open('install_config.json'))
 c = SimpleNamespace(**config_dict)
 
 def test_install_from_url_scheme():
+    console.set_font("Menlo-Regular", 15)
     console.clear()
     print("*** Testing URL Scheme __main__ for: install_from_github.py ***\n")
 
