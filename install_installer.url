@@ -1,0 +1,1 @@
+pythonista://?exec=import%20requests%20as%20r;%20exec(r.get(https://raw.githubusercontent.com/jdaniellhebert/Pythonista-Github-Installer/master/install_from_github.py).content)&argv=from-Github&argv=&argv=jdaniellhebert&argv=Pythonista-Github-Installer&argv=master&argv=installer_app.py&argv=False
