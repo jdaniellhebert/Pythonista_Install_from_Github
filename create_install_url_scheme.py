@@ -36,7 +36,7 @@ def make_argv_pyld(argv):
 
 console.clear()
 
-code_url = 'https://raw.githubusercontent.com/' + GIT_USR + '/' + GIT_REPO + '/' + GIT_BRANCH + '/' + RAW_CODE
+code_url = f"'https://raw.githubusercontent.com/{GIT_USR}/{GIT_REPO}/{GIT_BRANCH}/{RAW_CODE}'"
 exec_code = 'import%20requests%20as%20r;%20exec(r.get(' + code_url + ').content)'
 argv = [INSTALL_DIR_NAME, GIT_AUTH, GIT_USR, GIT_REPO, GIT_BRANCH, START_FILE, IS_RELEASE]
 argv_pyld = make_argv_pyld(argv)

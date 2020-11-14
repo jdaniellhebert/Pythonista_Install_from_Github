@@ -8,7 +8,7 @@ import shortcuts
 import qrcode
 
 # Package imports
-from make_url_scheme import make_run_url_scheme
+# from make_url_scheme import make_run_url_scheme
 
 def init_install_path(install_dir_name):
     install_path = os.path.abspath(os.path.expanduser('~/Documents/' + install_dir_name))
@@ -63,7 +63,9 @@ if __name__ == '__main__':
 
         installed_dir = install_path + '/' + installed_files[0]
 
-        url_scheme = make_run_url_scheme(install_path, installed_files[0].replace('/',''), p.start_file)
+        # url_scheme = make_run_url_scheme(install_path, installed_files[0].replace('/',''), p.start_file)
+        start_path = install_path + '/' + installed_files[0].replace('/','') + '/' + p.start_file
+        url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         print(f"\nURL scheme: {url_scheme}")
         url_file = p.start_file.split('.')[0] + '.url'
         open(installed_dir + url_file, "w").write(url_scheme)
@@ -76,8 +78,3 @@ if __name__ == '__main__':
         print(f"\nQR Code saved as: {qrcode_file}")
     else:
         print(f"(ERROR) -- Missing parameters for module {sys.argv[0]}")
-
-    # Pythonisat URL Scheme Template
-    # pythonista://install_from_github.py?action=run&argv=<INSTALL_DIR>&argv=<GIT_AUTH>
-    #                                               &argv=<GIT_USR>&argv=<GIT_REPO>&argv=<GIT_BRANCH>
-    #                                               &argv=<START_FILE>
