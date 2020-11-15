@@ -10,37 +10,24 @@ import console
 
 # Module imports
 from install_from_github import init_install_path
-from make_url_scheme import make_run_url_scheme
 from tools_github import get_secret
-
-# globals for test functions
 
 # https://raw.githubusercontent.com/jdaniellhebert/Pythonista_Install_from_Github/main/install_from_github.py
 
 RAW_CODE = 'install_from_github.py'
-INSTALL_DIR_NAME = 'from-Github'
-GIT_AUTH = '' # empty because this is a public repository
-GIT_USR = 'jdaniellhebert'
-GIT_REPO = 'Pythonista_Install_from_Github'
-GIT_BRANCH = 'main'
-START_FILE = 'install_from_github.py'
-IS_RELEASE = 'False'
 SHORTCUTS_URL = ''
-
-def make_argv_pyld(argv):
-    argv_pyld = ''
-    for arg in argv:
-        argv_pyld = argv_pyld + '&argv=' + arg
-    print(f"argv_pyld: {argv_pyld}")
-    return argv_pyld
 
 console.clear()
 
-code_url = f"'https://raw.githubusercontent.com/{GIT_USR}/{GIT_REPO}/{GIT_BRANCH}/{RAW_CODE}'"
-exec_code = 'import%20requests%20as%20r;%20exec(r.get(' + code_url + ').content)'
-argv = [INSTALL_DIR_NAME, GIT_AUTH, GIT_USR, GIT_REPO, GIT_BRANCH, START_FILE, IS_RELEASE]
-argv_pyld = make_argv_pyld(argv)
-url_scheme = 'pythonista://?exec='+ exec_code + argv_pyld
+config_dict = json.load(open('install_config.json'))
+c = SimpleNamespace(**config_dict)
+
+params_url = f"https://raw.githubusercontent.com/jdaniellhebert/Pythonista_Install_from_Github/main/install_config.json"
+code_url = f"'https://raw.githubusercontent.com/{c.git_usr}/{c.git_repo}/{c.git_branch}/{RAW_CODE}'"
+glbls = {}
+lcls = {'p_url':params_url}
+exec_code = f"import requests as r; exec(r.get({code_url}).content)".replace(' ', '%20') # requests needs spaces represented by %20
+url_scheme =  f"pythonista://?exec={exec_code}"
 
 print(f"\nURL scheme: {url_scheme}")
 url_file = 'install_installer.url'
@@ -52,3 +39,5 @@ img.show()
 qrcode_file = 'install_installer.jpg'
 img.save(qrcode_file)
 print(f"\nQR Code saved as: {qrcode_file}")
+
+shortcuts.open_url(url_scheme)

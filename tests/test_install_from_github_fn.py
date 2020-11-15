@@ -1,3 +1,5 @@
+# To use this test easily move from tests folder to parent folder.
+
 # Python imports
 import json
 from types import SimpleNamespace
@@ -13,9 +15,17 @@ from install_from_github import init_install_path, make_git_url, install_from_gi
 
 # globals
 GIT_AUTH = get_secret()['CREDS1']['AUTH_TOKEN']
+CONFIG_DICT = 	{
+				"install_dir_name" : "from-Github",
+				"git_usr" : "dh-metre",
+				"git_repo" : "Metre-UI-App-Pythonista",
+				"git_branch" : "v0.1",
+				"start_file" : "App.py",
+				"is_release" : "True"
+				}
 
-config_dict = json.load(open('install_config.json'))
-c = SimpleNamespace(**config_dict)
+# config_dict = json.load(open('install_config.json'))
+c = SimpleNamespace(**CONFIG_DICT)
 
 def test_install_from_github():
     console.clear()
