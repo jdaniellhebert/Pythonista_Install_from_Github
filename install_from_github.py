@@ -21,8 +21,6 @@ CONFIG_DICT =   {
                 "is_release" : "True"
                 }
 
-params = SimpleNamespace(**CONFIG_DICT)
-
 def init_install_path(install_dir_name):
     install_path = os.path.abspath(os.path.expanduser('~/Documents/' + install_dir_name))
     os.makedirs(install_path, exist_ok=True)
@@ -96,6 +94,7 @@ def main():
         installed_dir = install_path + '/' + installed_files[0]
         create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
     else:
+        params = SimpleNamespace(**CONFIG_DICT)
         print("\nInstalling:")
         pprint(CONFIG_DICT)
         install_path, url, installed_files = install_branch(params)
