@@ -97,7 +97,7 @@ def main():
         create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
     else:
         print("\nInstalling:")
-        pprint(params_dict)
+        pprint(CONFIG_DICT)
         install_path, url, installed_files = install_branch(params)
 
         start_path = install_path + '/' + installed_files[0].replace('/','') + '/' + params.start_file
