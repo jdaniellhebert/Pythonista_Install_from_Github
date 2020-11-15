@@ -97,17 +97,15 @@ def main():
         print("\nInstalling:")
         pprint(CONFIG_DICT)
         install_path, url, installed_files = install_branch(params)
-        print("Installed Files:")
-        pprint(installed_files)
-        print()
 
         start_path = install_path + '/' + installed_files[0].replace('/','') + '/' + params.start_file
-        print(start_path)
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         print(f"\nURL scheme: {url_scheme}")
 
         installed_dir = install_path + '/' + installed_files[0]
         create_url_scheme_and_qr_code(installed_dir, url_scheme, params.start_file)
+
+        shortcuts.open_url(url_scheme)
 
 if __name__ == '__main__':
     main()
