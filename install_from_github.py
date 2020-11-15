@@ -96,6 +96,7 @@ def main():
         print("\nInstalling:")
         pprint(CONFIG_DICT)
         install_path, url, installed_files = install_branch(params)
+        print(install_path, url, installed_files)
 
         start_path = install_path + '/' + installed_files[0].replace('/','') + '/' + params.start_file
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
