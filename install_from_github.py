@@ -12,12 +12,12 @@ import requests
 
 CONFIG_DICT =   {
                 "install_dir_name" : "from-Github",
-                "git_usr" : "dh-metre",
+                "git_usr" : "jdaniellhebert",
                 "git_auth": "",
-                "git_repo" : "Metre-UI-App-Pythonista",
-                "git_branch" : "v0.1",
-                "start_file" : "App.py",
-                "is_release" : "True"
+                "git_repo" : "Pythonista_Install_from_Github",
+                "git_branch" : "main",
+                "start_file" : "install_app.py",
+                "is_release" : "False"
                 }
 
 def init_install_path(install_dir_name):
