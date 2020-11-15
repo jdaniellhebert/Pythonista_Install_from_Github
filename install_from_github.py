@@ -1,5 +1,3 @@
-
-print("byebye")
 # ARGS definition can be appended before this file in create_install_url_scheme.py
 
 # Python imports
@@ -58,7 +56,7 @@ def install_from_github(install_path, auth_token, url):
         return None
 
 def install_branch(params):
-    install_path = init_install_path(params.install_dir)
+    install_path = init_install_path(params.install_dir_name)
     url = make_git_url(params.git_usr, params.git_repo, params.git_branch)
     installed_files = install_from_github(install_path, params.git_auth, url)
     print(f"\nUnzipping: {url} ")
@@ -77,7 +75,6 @@ def create_url_scheme_and_qr_code(installed_dir, url_scheme, start_file):
     print(f"\nQR Code saved as: {qrcode_file}")
 
 def main():
-    print('hello')
     if len(sys.argv) > 1:
         p_keys = ('module', 'install_dir', 'git_auth', 'git_usr', 'git_repo', 'git_branch', 'start_file', 'is_release')
         params_dict = dict(zip(p_keys, sys.argv))
