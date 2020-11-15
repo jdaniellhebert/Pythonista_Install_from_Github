@@ -21,7 +21,7 @@ CONFIG_DICT =   {
                 "is_release" : "True"
                 }
 
-c = SimpleNamespace(**CONFIG_DICT)
+params = SimpleNamespace(**CONFIG_DICT)
 
 def init_install_path(install_dir_name):
     install_path = os.path.abspath(os.path.expanduser('~/Documents/' + install_dir_name))
