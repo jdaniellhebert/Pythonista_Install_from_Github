@@ -60,8 +60,9 @@ def install_branch(params):
     install_path = init_install_path(params.install_dir_name)
     url = make_git_url(params.git_usr, params.git_repo, params.git_branch)
     installed_files = install_from_github(install_path, params.git_auth, url)
-    print(f"\nUnzipping: {url} ")
+    print(f"\nUnzipping: {url}")
     pprint(installed_files)
+    print()
     return install_path, url, installed_files
 
 def create_url_scheme_and_qr_code(installed_dir, url_scheme, start_file):
@@ -96,9 +97,12 @@ def main():
         print("\nInstalling:")
         pprint(CONFIG_DICT)
         install_path, url, installed_files = install_branch(params)
-        print(install_path, url, installed_files)
+        print("Installed Files:")
+        pprint(installed_files)
+        print()
 
         start_path = install_path + '/' + installed_files[0].replace('/','') + '/' + params.start_file
+        print(start_path)
         url_scheme = shortcuts.pythonista_url(path=start_path, action='run', args="", argv=[])
         print(f"\nURL scheme: {url_scheme}")
 
