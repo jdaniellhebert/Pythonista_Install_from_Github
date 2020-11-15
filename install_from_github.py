@@ -13,6 +13,7 @@ import requests
 CONFIG_DICT =   {
                 "install_dir_name" : "from-Github",
                 "git_usr" : "dh-metre",
+                "git_auth": "",
                 "git_repo" : "Metre-UI-App-Pythonista",
                 "git_branch" : "v0.1",
                 "start_file" : "App.py",
